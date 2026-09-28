@@ -1,0 +1,4 @@
+defect_type,defect_count,pct_of_defects
+crack,13,56.5
+void,9,39.1
+scratch,1,4.3

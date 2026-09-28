@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Autonomous Quality Control & RCA Dashboard</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; margin: 0; background: #0f172a; color: #f8fafc; padding: 24px; }
+        .header { border-bottom: 1px solid #334155; padding-bottom: 16px; margin-bottom: 24px; }
+        .header h1 { margin: 0 0 6px 0; color: #38bdf8; font-size: 24px; }
+        .header p { margin: 0; color: #94a3b8; font-size: 14px; }
+        .grid-kpi { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 24px; }
+        .card { background: #1e293b; border: 1px solid #334155; border-radius: 8px; padding: 18px; }
+        .card h4 { margin: 0; color: #94a3b8; font-size: 13px; text-transform: uppercase; }
+        .card .val { font-size: 28px; font-weight: bold; margin-top: 8px; }
+        .val.good { color: #4ade80; }
+        .val.alert { color: #f87171; }
+        .val.blue { color: #38bdf8; }
+        .layout { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        pre { background: #090d16; border: 1px solid #1e293b; border-radius: 6px; padding: 14px; color: #a5f3fc; font-size: 12px; line-height: 1.45; overflow-x: auto; white-space: pre-wrap; }
+        table { width: 100%; border-collapse: collapse; margin-top: 8px; font-size: 14px; }
+        th, td { text-align: left; padding: 10px; border-bottom: 1px solid #334155; }
+        th { color: #94a3b8; }
+        .badge { background: #ef4444; color: white; padding: 3px 8px; border-radius: 4px; font-size: 11px; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Autonomous Manufacturing Quality & Root-Cause Operations</h1>
+        <p>Production Line-A | Live Telemetry, YOLOv11 Computer Vision & Autonomous Agent RCA</p>
+    </div>
+
+    <div class="grid-kpi">
+        <div class="card">
+            <h4>Total Inspected</h4>
+            <div class="val blue">60 units</div>
+        </div>
+        <div class="card">
+            <h4>Defects Detected</h4>
+            <div class="val alert">23 units</div>
+        </div>
+        <div class="card">
+            <h4>First-Pass Yield</h4>
+            <div class="val good">61.7%</div>
+        </div>
+        <div class="card">
+            <h4>Scrap Rate</h4>
+            <div class="val alert">38.3%</div>
+        </div>
+    </div>
+
+    <div class="layout">
+        <div class="card">
+            <h3>Defect Distribution (Pareto)</h3>
+            <table>
+                <tr><th>Defect Category</th><th>Detected Count</th><th>Impact Status</th></tr>
+<tr><td><strong>CRACK</strong></td><td>13</td><td><span class='badge'>CRITICAL DRIFT</span></td></tr><tr><td><strong>VOID</strong></td><td>9</td><td><span class='badge'>CRITICAL DRIFT</span></td></tr><tr><td><strong>SCRATCH</strong></td><td>1</td><td><span class='badge'>CRITICAL DRIFT</span></td></tr>
+            </table>
+            <h3 style="margin-top:24px;">Statistical Process Control Drift Chart</h3>
+            <img src="spc_drift_charts.png" style="width:100%; border-radius:6px; border:1px solid #334155;" alt="SPC Control Chart">
+        </div>
+        <div class="card">
+            <h3>Autonomous Agent Incident Ticket</h3>
+            <pre>
+================================================================================
+🏭 AUTONOMOUS ROOT-CAUSE INCIDENT REPORT: INC-2026-0329
+================================================================================
+Timestamp Generated: 2026-09-28 21:26:15
+Target Station: LINE-A | CNC-MILL-04
+Severity Level: CRITICAL - HIGH SCRAP RISK
+
+1. EXECUTIVE SUMMARY
+--------------------
+A continuous cluster of 6 physical defects (CRACK) was detected 
+by the YOLOv11 optical inspection camera. Telemetry correlation confirms statistical
+process control breach (Hotelling's T² breached with 0 consecutive alarm periods).
+
+2. DEFECT CLUSTER DETAILS
+-------------------------
+ • Serial: PART-2026-SN5059 | Time: 2026-03-29 09:19:15 | Type: crack | Conf: 0.93
+ • Serial: PART-2026-SN5058 | Time: 2026-03-29 09:18:30 | Type: void | Conf: 0.92
+ • Serial: PART-2026-SN5057 | Time: 2026-03-29 09:17:45 | Type: crack | Conf: 0.98
+ • Serial: PART-2026-SN5056 | Time: 2026-03-29 09:17:00 | Type: crack | Conf: 0.93
+ • Serial: PART-2026-SN5053 | Time: 2026-03-29 09:14:45 | Type: crack | Conf: 0.92
+ • Serial: PART-2026-SN5052 | Time: 2026-03-29 09:14:00 | Type: crack | Conf: 0.92
+
+3. CORRELATED SENSOR TELEMETRY
+------------------------------
+ • Peak Spindle Temperature : 83.2 °C (Baseline: 65.0 °C)
+ • Peak Vibration Amplitude : 2.032 mm/s (Baseline: 1.20 mm/s)
+ • Hotelling's T² Breaches  : 0 alarms logged in incident window
+
+4. DEDUCED ROOT CAUSE
+---------------------
+Spindle Bearing Overheating & Eccentric Vibration. Frictional thermal expansion is inducing micro-cracks and thermal voids on the workpiece.
+
+5. RECOMMENDED CORRECTIVE ACTIONS
+---------------------------------
+1. Immediately halt Line-A spindle rotation.
+2. Inspect spindle bearing lubrication and coolant flow.
+3. Perform vibration spectrum check for bearing raceway spalling.
+================================================================================
+</pre>
+        </div>
+    </div>
+</body>
+</html>

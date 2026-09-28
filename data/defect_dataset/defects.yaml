@@ -1,0 +1,8 @@
+path: D:/Unigram/FSDS&AI with ChatGPT/Projects/manufacturing_qc_agent/data/defect_dataset
+train: images/train
+val: images/val
+
+names:
+  0: scratch
+  1: void
+  2: crack

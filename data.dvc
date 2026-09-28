@@ -1,0 +1,15 @@
+{
+  "schema_version": "2.0",
+  "outs": [
+    {
+      "path": "data/defect_dataset",
+      "md5": "c3093800310aa68d33193eee6ba790cb",
+      "desc": "YOLOv11 manufacturing surface flaw images and annotations (v1.0.0)"
+    },
+    {
+      "path": "data/machine_telemetry.csv",
+      "md5": "d0e90bc516e17654d6b333273a6ad2f9",
+      "desc": "500-step high frequency motor vibration, temp, and RPM telemetry"
+    }
+  ]
+}

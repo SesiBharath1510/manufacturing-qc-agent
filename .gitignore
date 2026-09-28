@@ -1,0 +1,25 @@
+# Virtual Environment
+venv/
+ENV/
+env/
+
+# Python Cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.cache
+
+# Heavy Model Weights (Tracked via DVC / Triton)
+*.pt
+*.onnx
+runs/
+
+# Local Databases & Logs
+*.db
+mlruns/
+.pytest_cache/
+
+# System / IDE
+.vscode/
+.idea/
+.DS_Store

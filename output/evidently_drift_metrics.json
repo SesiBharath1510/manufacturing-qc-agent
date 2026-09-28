@@ -1,0 +1,25 @@
+{
+  "dataset_drift": true,
+  "number_of_drifted_columns": 3,
+  "total_columns": 3,
+  "columns": {
+    "temperature_c": {
+      "statistic": 0.47600000000000003,
+      "p_value": 5.388549143906695e-26,
+      "drift_detected": true,
+      "threshold": 0.05
+    },
+    "vibration_mms": {
+      "statistic": 0.436,
+      "p_value": 9.95285505193658e-22,
+      "drift_detected": true,
+      "threshold": 0.05
+    },
+    "rpm": {
+      "statistic": 0.132,
+      "p_value": 0.025557704697502605,
+      "drift_detected": true,
+      "threshold": 0.05
+    }
+  }
+}
