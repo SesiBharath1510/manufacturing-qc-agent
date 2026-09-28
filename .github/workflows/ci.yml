@@ -27,7 +27,7 @@ jobs:
     - name: Install Python Dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install numpy pandas matplotlib scipy sqlalchemy pytest onnx ultralytics opencv-python-headless
+        pip install numpy pandas matplotlib scipy sqlalchemy pytest onnx ultralytics opencv-python-headless psycopg2-binary
 
     - name: Initialize Database and Triton Config
       run: |

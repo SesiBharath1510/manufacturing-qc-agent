@@ -3,8 +3,12 @@ import json
 import sqlite3
 import pandas as pd
 from datetime import datetime, timedelta
-import psycopg2
-from psycopg2.extensions import ISOLATION_LEVEL_AUTOCOMMIT
+try:
+    import psycopg2
+    from psycopg2.extensions import ISOLATION_LEVEL_AUTOCOMMIT
+    PSYCOPG2_AVAILABLE = True
+except ImportError:
+    PSYCOPG2_AVAILABLE = False
 
 # PostgreSQL / TimescaleDB Connection Config
 PG_HOST = "localhost"
@@ -15,6 +19,12 @@ PG_DB = "factory_telemetry"
 
 def get_connection():
     """Attempt connecting to TimescaleDB (PostgreSQL); fallback to local SQLite if Docker is inactive."""
+    if not PSYCOPG2_AVAILABLE:
+        print("psycopg2 not installed. Operating in SQLite-Compatible Enterprise Fallback Mode...")
+        sqlite_path = os.path.join("data", "factory_timescaledb_mirror.db")
+        conn = sqlite3.connect(sqlite_path)
+        return conn, "SQLITE"
+
     try:
         conn = psycopg2.connect(
             host=PG_HOST,
@@ -32,7 +42,7 @@ def get_connection():
         sqlite_path = os.path.join("data", "factory_timescaledb_mirror.db")
         conn = sqlite3.connect(sqlite_path)
         return conn, "SQLITE"
-
+    
 def initialize_schema():
     conn, engine_type = get_connection()
     cursor = conn.cursor()
